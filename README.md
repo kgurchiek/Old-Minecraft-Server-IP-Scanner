@@ -1,4 +1,4 @@
-# Minecraft-Server-IP-Scanner
+# Minecraft Server IP Scanner
 
 <div align="center">
     <img src="https://img.shields.io/github/last-commit/kgurchiek/Minecraft-Server-IP-Scanner" alt="GitHub last commit"/>
