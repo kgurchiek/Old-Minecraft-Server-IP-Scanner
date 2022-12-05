@@ -5,6 +5,7 @@
     <img src="https://img.shields.io/github/languages/code-size/kgurchiek/Minecraft-Server-IP-Scanner" alt="GitHub code size in bytes"/>
 </div>
 
+## About
 Scans the internet for Minecraft server ips. Used to gather the database for my server scanner discord bot (https://github.com/kgurchiek/Minecraft-Server-Scanner-Discord-Bot).
 
 ## Configuration
