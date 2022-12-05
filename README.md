@@ -7,6 +7,6 @@ There are two variables in index.js that you'll want to configure to your liking
 - **pingTimeout:** how long to wait for a ping response before deciding it isn't an active server. 1500 - 2000 is recommended.
 
 ## Usage
-When you start, copy the contents of templateServerList.json into serverList.json. This code re uires node.js, so make sure you have that installed. When you're ready to start the scan, run `node index.js`.
+When you start, copy the contents of templateServerList.json into serverList.json. This code requires node.js, so make sure you have that installed. When you're ready to start the scan, run `node index.js`.
 
 Note that the code only logs ips to the console every ping chunk, not every single ping.
