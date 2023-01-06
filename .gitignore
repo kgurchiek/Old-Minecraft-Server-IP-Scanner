@@ -1,0 +1,5 @@
+# config.json may contain project files and should be totally ignored by VCS.
+config.json
+
+# Project files
+.idea

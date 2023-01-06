@@ -9,11 +9,17 @@
 Scans the internet for Minecraft server ips. Used to gather the database for my server scanner discord bot (https://github.com/kgurchiek/Minecraft-Server-Scanner-Discord-Bot).
 
 ## Configuration
-There are two variables in index.js that you'll want to configure to your liking:
+Configuration is handled via a json file, `config.json`. An example `config.example.json` is provided in this repository.
+
+There are two variables in config.json that you'll want to configure to your liking:
 - **pingChunkSize:** how many ips are pinged at once. Larger numbers will make the scan faster, but will of course be harder on your computer. Make sure this number is below your max open files limit, otherwise you won't get any results.
 - **pingTimeout:** how long to wait for a ping response before deciding it isn't an active server. 1500 - 2000 is recommended.
 
-Copy the contents of templateServerList.json into serverList.json. Then go to the bottom and find where the pingChunk() function is used. Replace the ip inside with whatever ip you want to start the scan with. Then, just above that, look into the pingChunk function's code, and find where it runs a ping() funtion. After `countIP(start, i)`, there's a number (25565 by default). That's the port of the server that the scanner is searching for, you can set that to whatver you'd like. 25565 is the default Java Edition port, and 19132 is the default Bedrock Edition port, so those are recommended as they would have the most servers.
+You can also adjust **scanPort** to configure which port will be hit on each IP, and **scanBlock** to adjust which /8 block will be hit by the scanner.
+
+25565 is the default Java Edition port, and 19132 is the default Bedrock Edition port, so those are recommended as they would have the most servers.
+
+The **database** section will be passed directly to `mariadb.createPool()`. Check out [their documentation](https://mariadb.com/kb/en/getting-started-with-the-nodejs-connector/) for more information.
 
 This code requires Node.js, so make sure you have that installed.
 
