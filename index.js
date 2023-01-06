@@ -1,36 +1,37 @@
 const { MinecraftServerListPing } = require("minecraft-status");
 const fs = require("fs");
-const file = require('./serverList.json')
-var successes = [];
-const pingChunkSize = 5240;
-const pingTimeout = 1500;
-var chunksScanned = 0;
+const serverListFile = require('./serverList.json')
+let successes = [];
+
+let chunksScanned = 0;
+
+const config = require("./config.json");
 
 function ping(ip, port) {
-  MinecraftServerListPing.ping(0, ip, port, pingTimeout)
-    .then(response => {
+  MinecraftServerListPing.ping(0, ip, port, config.pingTimeout)
+    .then(() => {
         console.log("success: " + ip);
         successes.push({
           ip: ip,
           port: port
         });
     })
-    .catch(error => {
+    .catch(() => {
       //console.log(error);
     });
 }
 
 function saveData() {
-  for (var i = 0; i < successes.length; i++) {
-    if (!(file.successIPs.includes(successes[i].ip) && file.successPorts.includes(successes[i].port))) {
-      file.successIPs.push(successes[i].ip);
-      file.successPorts.push(successes[i].port);
+  for (let i = 0; i < successes.length; i++) {
+    if (!(serverListFile.successIPs.includes(successes[i].ip) && serverListFile.successPorts.includes(successes[i].port))) {
+      serverListFile.successIPs.push(successes[i].ip);
+      serverListFile.successPorts.push(successes[i].port);
     }
   }
 
-  file.totalServers = file.successIPs.length;
+  serverListFile.totalServers = serverListFile.successIPs.length;
   
-  fs.writeFile("./serverList.json", JSON.stringify(file), 'utf8', function (err) {
+  fs.writeFile("./serverList.json", JSON.stringify(serverListFile), 'utf8', function (err) {
     if (err) {
       console.log("error while saving data:");
       return console.log(err);
@@ -39,14 +40,8 @@ function saveData() {
     console.log("data saved");
   });
 }
-
-function ipValue(ip) {
-  var ipList = ip.split('.');
-  return ipList[3] + 255 * ipList[2] + 255**2 * ipList[1] + 255**3 * ipList[0]
-}
-
 function countIP(ip, count) {
-  var ipList = String(ip).split('.');
+  let ipList = String(ip).split('.');
 
   ipList[0] = parseInt(ipList[0]);
   ipList[1] = parseInt(ipList[1]);
@@ -86,17 +81,17 @@ function countIP(ip, count) {
 function pingChunk(start) {
   console.log(start);
   
-  for (var i = 0; i < pingChunkSize; i++) {
-    ping(countIP(start, i), 25565);
+  for (let i = 0; i < config.pingChunkSize; i++) {
+    ping(countIP(start, i), config.scanPort);
   }
 
   setTimeout(function() {
     chunksScanned++;
-    if (chunksScanned % 20 == 0) {
+    if (chunksScanned % 20 === 0) {
       saveData();
     }
-    pingChunk(countIP(start, pingChunkSize))
-  }, pingTimeout)
+    pingChunk(countIP(start, config.pingChunkSize))
+  }, config.pingTimeout)
 }
 
-pingChunk('52.0.0.0');
+pingChunk(config.scanBlock);
