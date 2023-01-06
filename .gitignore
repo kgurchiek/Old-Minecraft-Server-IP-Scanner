@@ -3,3 +3,6 @@ config.json
 
 # Project files
 .idea
+
+# Installed project files
+node_modules
