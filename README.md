@@ -13,7 +13,7 @@ Configuration is handled via a json file, `config.json`. An example `config.exam
 
 There are two variables in config.json that you'll want to configure to your liking:
 - **pingChunkSize:** how many ips are pinged at once. Larger numbers will make the scan faster, but will of course be harder on your computer. Make sure this number is below your max open files limit, otherwise you won't get any results.
-- **pingTimeout:** how long to wait for a ping response before deciding it isn't an active server. 1500 - 2000 is recommended.
+- **pingTimeout:** how long to wait for a ping response before deciding it isn't an active server. 2000 - 3000 is recommended.
 
 You can also adjust **scanPort** to configure which port will be hit on each IP, and **scanBlock** to adjust which /8 block will be hit by the scanner.
 
