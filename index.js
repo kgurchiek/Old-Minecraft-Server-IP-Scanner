@@ -94,4 +94,4 @@ function pingChunk(start) {
   }, config.pingTimeout)
 }
 
-pingChunk(config.scanBlock);
+pingChunk(config.startIP);
