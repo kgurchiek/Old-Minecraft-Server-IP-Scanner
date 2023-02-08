@@ -17,7 +17,7 @@ There are two variables in config.json that you'll want to configure to your lik
 
 You can also adjust **scanPort** to configure which port will be hit on each IP, and **scanBlock** to adjust which /8 block will be hit by the scanner.
 
-25565 is the default Java Edition port, and 19132 is the default Bedrock Edition port, so those are recommended as they would have the most servers.
+25565 is the default Java Edition port so it's the recommended port to scan, as it has the most servers.
 
 The **database** section will be passed directly to `mariadb.createPool()`. Check out [their documentation](https://mariadb.com/kb/en/getting-started-with-the-nodejs-connector/) for more information.
 
