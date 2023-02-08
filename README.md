@@ -9,7 +9,7 @@
 Scans the internet for Minecraft server ips. Used to gather the database for my server scanner discord bot (https://github.com/kgurchiek/Minecraft-Server-Scanner-Discord-Bot).
 
 ## Configuration
-Configuration is handled via a json file, `config.json`. An example is provided in this repository.
+Configuration is handled via a json file, `config.json`. An example `config.example.json` is provided in this repository.
 
 There are two variables in config.json that you'll want to configure to your liking:
 - **pingChunkSize:** how many ips are pinged at once. Larger numbers will make the scan faster, but will of course be harder on your computer. Make sure this number is below your max open files limit, otherwise you won't get any results.
