@@ -2,10 +2,5 @@
   "pingChunkSize": 5240,
   "pingTimeout": 1500,
   "scanPort": 25565,
-  "scanBlock": "52.0.0.0",
-  "database": {
-    "user": "mariadbuser",
-    "password": "mariadbpassword",
-    "host": "mariadbhost"
-  }
+  "scanBlock": "52.0.0.0"
 }
