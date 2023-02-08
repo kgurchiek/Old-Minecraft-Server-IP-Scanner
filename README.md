@@ -15,11 +15,9 @@ There are two variables in config.json that you'll want to configure to your lik
 - **pingChunkSize:** how many ips are pinged at once. Larger numbers will make the scan faster, but will of course be harder on your computer. Make sure this number is below your max open files limit, otherwise you won't get any results.
 - **pingTimeout:** how long to wait for a ping response before deciding it isn't an active server. 2000 - 3000 is recommended.
 
-You can also adjust **scanPort** to configure which port will be hit on each IP, and **scanBlock** to adjust which /8 block will be hit by the scanner.
+You can also adjust **scanPort** to configure which port will be hit on each IP, and **startIP** to adjust what ip the scanner will start scanning on.
 
 25565 is the default Java Edition port so it's the recommended port to scan, as it has the most servers.
-
-The **database** section will be passed directly to `mariadb.createPool()`. Check out [their documentation](https://mariadb.com/kb/en/getting-started-with-the-nodejs-connector/) for more information.
 
 This code requires Node.js, so make sure you have that installed.
 
